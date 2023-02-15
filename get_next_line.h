@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:01:56 by mflury            #+#    #+#             */
-/*   Updated: 2023/02/12 03:51:31 by mflury           ###   ########.fr       */
+/*   Updated: 2023/02/15 17:15:52 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,19 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 5
+#  define BUFFER_SIZE 5
 # endif
 
-typedef struct 		s_list
+typedef struct s_list
 {
-	char			*content;
-	struct s_list	*next;
+	int			pos;
+	char		content[BUFFER_SIZE];
+	int			maxsize;
+	int			fd;
 }					t_list;
 
 char	*get_next_line(int fd);
-
+char	*ft_strjoin(char *str, char c);
+int		ft_strlen(char *str);
 
 #endif

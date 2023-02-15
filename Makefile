@@ -12,7 +12,7 @@
 
 # NOT USABLE YET, NEED TO BE DONE #
 
-NAME = libft.a
+NAME = get_next_line.a
 OBJ = $(SRC:.c=.o)
 CC = @gcc
 CFLAGS = -Wall -Werror -Wextra
@@ -20,16 +20,16 @@ CFLAGS = -Wall -Werror -Wextra
 SRC = $(SRC_P1) $(SRC_P2)
 
 SRC_P1 = \
-	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_atoi.c \
-	ft_memset.c ft_bzero.c ft_memcpy.c ft_memcmp.c ft_memmove.c ft_memchr.c \
-	ft_strlen.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_strnstr.c \
-	ft_toupper.c ft_tolower.c ft_strlcat.c ft_strlcpy.c \
-	ft_strdup.c ft_calloc.c \
+	get_next_line.c \
+	get_next_line_utils.c \
+	\
+	\
+	\
 
 SRC_P2 = \
-	ft_substr.c ft_strjoin.c ft_strtrim.c  \
 	\
-	ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
+	\
+	\
 
 SRC_BONUS = \
 	\
@@ -59,10 +59,10 @@ re : fclean all
 
 tar :
 	@echo Creating TAR.GZ archive
-	@tar -czvf $(NAME).tar.gz $(SRC) libft.h Makefile
+	@tar -czvf $(NAME).tar.gz $(SRC) get_next_line.h Makefile
 
 zip :
 	@echo Creating ZIP archive
-	@zip -r $(NAME).zip $(SRC) libft.h Makefile
+	@zip -r $(NAME).zip $(SRC) get_next_line.h Makefile
 
 .PHONY : clean fclean re tar zip
