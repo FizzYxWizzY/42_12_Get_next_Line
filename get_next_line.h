@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:01:56 by mflury            #+#    #+#             */
-/*   Updated: 2023/02/22 16:25:59 by mflury           ###   ########.fr       */
+/*   Updated: 2023/04/20 15:40:37 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5
 # endif
-
+// struct that contains the pos where we are at in the content.
+// the content read.
+// the size of the buffer.
+// the file descriptor.
 typedef struct s_list
 {
 	int			pos;

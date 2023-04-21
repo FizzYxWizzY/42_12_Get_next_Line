@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:01:40 by mflury            #+#    #+#             */
-/*   Updated: 2023/02/22 16:25:54 by mflury           ###   ########.fr       */
+/*   Updated: 2023/04/20 15:40:33 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,12 @@
 //			fd from where we read.
 // 					 buffer of the read.
 //									size
+// return the number of char read, -1 if there is a problem reading.
 
-char	ft_checkread(t_list *gnl)
+// function that return the content char by char.
+// return 0 if there is no content to read.
+// return -1 if there is a problem reading fd.
+char	ft_getchar(t_list *gnl)
 {
 	char	c;
 
@@ -25,15 +29,17 @@ char	ft_checkread(t_list *gnl)
 	{
 		gnl->pos = 0;
 		gnl->maxsize = read(gnl->fd, gnl->content, BUFFER_SIZE);
-		if (gnl->maxsize <= 0)
+		if (gnl->maxsize == 0)
 			return (0);
+		if (gnl->maxsize == -1)
+			return (-1);
 	}
 	c = gnl->content[gnl->pos];
 		gnl->pos++;
 	return (c);
 }
 
-//initialise the struct content.
+//initialise the struct.
 
 int	ft_init(t_list *gnl, int fd)
 {
@@ -47,8 +53,8 @@ int	ft_init(t_list *gnl, int fd)
 
 // create a static struct (t_list gnl) and set its fd to -1 (not set yet),
 // set the fd of the struct (on the first time) with ft_init,
-// 
-
+// read in the fd and put it in content, then return content char by char.
+// copy char in line until until it encounter a \n, return line. 
 char	*get_next_line(int fd)
 {
 	static t_list	gnl = {.fd = -1};
@@ -61,13 +67,19 @@ char	*get_next_line(int fd)
 		if (ft_init(&gnl, fd) != 1)
 			return (NULL);
 	}
-	c = ft_checkread(&gnl);
+	c = ft_getchar(&gnl);
 	while (c)
 	{
+		if (c == -1)
+		{
+			if (line)
+				free(line);
+			return (NULL);
+		}
 		line = ft_strjoin(line, c);
 		if (c == '\n')
 			return (line);
-		c = ft_checkread(&gnl);
+		c = ft_getchar(&gnl);
 	}
 	return (line);
 }

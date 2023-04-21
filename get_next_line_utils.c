@@ -6,14 +6,13 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:01:51 by mflury            #+#    #+#             */
-/*   Updated: 2023/02/24 16:06:07 by mflury           ###   ########.fr       */
+/*   Updated: 2023/04/20 15:41:13 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 // check the lenght of the str.
-
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -28,21 +27,20 @@ int	ft_strlen(char *str)
 
 // check the lenght of the old string (first time = 0),
 // create a new string, copy the old string in it, 
-// then add the next char and a '\0' (lenstr + 2)
+// then add the next char and a '\0' (str_lenght + 2)
 // and free the old string.
-
 char	*ft_strjoin(char *str, char c)
 {
 	int		i;
-	int		lenstr;
+	int		str_lenght;
 	char	*newstr;
 
-	lenstr = ft_strlen(str);
+	str_lenght = ft_strlen(str);
 	i = 0;
-	newstr = malloc(lenstr + 2);
+	newstr = malloc(str_lenght + 2);
 	if (!newstr)
 		return (NULL);
-	while (i < lenstr)
+	while (i < str_lenght)
 	{
 		newstr[i] = str[i];
 		i++;
