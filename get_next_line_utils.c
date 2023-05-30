@@ -6,16 +6,16 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:01:51 by mflury            #+#    #+#             */
-/*   Updated: 2023/04/20 15:41:13 by mflury           ###   ########.fr       */
+/*   Updated: 2023/05/11 18:04:02 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 // check the lenght of the str.
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (!str)
@@ -31,8 +31,8 @@ int	ft_strlen(char *str)
 // and free the old string.
 char	*ft_strjoin(char *str, char c)
 {
-	int		i;
-	int		str_lenght;
+	size_t	i;
+	size_t	str_lenght;
 	char	*newstr;
 
 	str_lenght = ft_strlen(str);

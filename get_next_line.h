@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:01:56 by mflury            #+#    #+#             */
-/*   Updated: 2023/04/20 15:40:37 by mflury           ###   ########.fr       */
+/*   Updated: 2023/05/11 18:03:27 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ typedef struct s_list
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *str, char c);
-int		ft_strlen(char *str);
+size_t	ft_strlen(const char *str);
 
 #endif
